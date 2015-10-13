@@ -19,8 +19,9 @@ defmodule Constructeev.Router do
     get "/", PageController, :index
   end
 
-  # Other scopes may use custom stacks.
-  # scope "/api", Constructeev do
-  #   pipe_through :api
-  # end
+  scope "/api", Constructeev do
+     pipe_through :api
+     resources "/channels", ChannelController
+  end
+
 end
