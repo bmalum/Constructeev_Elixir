@@ -22,7 +22,10 @@ defmodule Constructeev.Router do
 
   scope "/api", Constructeev do
      pipe_through :api
-     resources "/channels", ChannelController
+
+     resources "channels", ChannelController do
+      resources "feedbacks", FeedbackController 
+    end
      get "/sessions", SessionController, :index 
      post "/sessions", SessionController, :create
      delete "/sessions", SessionController, :delete 
