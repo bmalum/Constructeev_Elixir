@@ -2,7 +2,7 @@ defmodule Constructeev.ChannelControllerTest do
   use Constructeev.ConnCase
 
   alias Constructeev.Channel
-  @valid_attrs %{email: "some content", name: "some content", sec_hash: "some content", slug: "some content"}
+  @valid_attrs %{email: "some content", name: "some content", slug: "some content"}
   @invalid_attrs %{}
 
   setup do
