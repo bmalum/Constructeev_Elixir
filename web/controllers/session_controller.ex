@@ -5,7 +5,7 @@ defmodule Constructeev.SessionController do
   def index(conn, _params) do
     channel = get_session(conn, :channel)
     if channel do 
-      render(conn, "session.json", channel: channel)
+      render(conn, "show.json", channel: channel)
     else
       render(conn, "error.json", error_msg: "Invalid Session")
     end
