@@ -11,6 +11,7 @@ defmodule Constructeev.Router do
 
   pipeline :api do
     plug :accepts, ["json"]
+    plug :fetch_session
   end
 
   scope "/", Constructeev do
@@ -22,6 +23,9 @@ defmodule Constructeev.Router do
   scope "/api", Constructeev do
      pipe_through :api
      resources "/channels", ChannelController
+     get "/sessions", SessionController, :index 
+     post "/sessions", SessionController, :create
+     delete "/sessions", SessionController, :delete 
   end
 
 end
