@@ -2,6 +2,7 @@ defmodule Constructeev.FeedbackController do
   use Constructeev.Web, :controller
 
   alias Constructeev.Feedback
+  alias Constructeev.Channel
 
   plug :scrub_params, "feedback" when action in [:create, :update]
 
@@ -10,14 +11,13 @@ defmodule Constructeev.FeedbackController do
     render(conn, "index.json", feedbacks: feedbacks)
   end
 
-  def create(conn, %{"feedback" => feedback_params}) do
-    changeset = Feedback.changeset(%Feedback{}, feedback_params)
+  def create(conn,  %{"channel_id" => channel_id, "feedback" => feedback_params}) do
+    changeset = Channel |> Repo.get(channel_id) |> Ecto.Model.build(:feedbacks) |> Feedback.changeset(feedback_params)
 
     case Repo.insert(changeset) do
       {:ok, feedback} ->
         conn
         |> put_status(:created)
-        |> put_resp_header("location", channel_feedback_path(conn, :show, feedback))
         |> render("show.json", feedback: feedback)
       {:error, changeset} ->
         conn

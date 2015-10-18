@@ -10,6 +10,7 @@ defmodule Constructeev.Channel do
     field :slug, :string
 
     timestamps
+    has_many :feedbacks, Constructeev.Feedback
   end
 
   @required_fields ~w(name email slug)
