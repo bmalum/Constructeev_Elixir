@@ -1,4 +1,4 @@
-# Constructeev
+# Constructeev [![Inline docs](http://inch-ci.org/github/bmalum/constructeev_Elixir.svg?branch=develop)](http://inch-ci.org/github/bmalum/constructeev_Elixir)
 
 To start your Phoenix app:
 
