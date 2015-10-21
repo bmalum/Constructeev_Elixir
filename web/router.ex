@@ -24,7 +24,9 @@ defmodule Constructeev.Router do
      pipe_through :api
 
      resources "channels", ChannelController do
-      resources "feedbacks", FeedbackController 
+      resources "feedbacks", FeedbackController do 
+        resources "messages", MessageController
+      end
     end
      get "/sessions", SessionController, :index 
      post "/sessions", SessionController, :create

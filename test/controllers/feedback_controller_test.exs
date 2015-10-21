@@ -2,6 +2,8 @@ defmodule Constructeev.FeedbackControllerTest do
   use Constructeev.ConnCase
 
   alias Constructeev.Feedback
+  alias Constructeev.Channel
+
   @valid_attrs %{author: "some content", content: "some content", happiness: 42, title: "some content"}
   @invalid_attrs %{}
 
@@ -11,7 +13,7 @@ defmodule Constructeev.FeedbackControllerTest do
   end
 
   test "lists all entries on index", %{conn: conn} do
-    conn = get conn, feedback_path(conn, :index)
+    conn = get conn, channel_feedback_path(conn, :index)
     assert json_response(conn, 200)["data"] == []
   end
 

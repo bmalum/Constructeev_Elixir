@@ -1,17 +1,15 @@
-defmodule Constructeev.Feedback do
+defmodule Constructeev.Message do
   use Constructeev.Web, :model
 
-  schema "feedbacks" do
-    field :title, :string
-    field :author, :string
+  schema "messages" do
+    field :parent_id, :integer
     field :content, :string
-    field :happiness, :integer
-    belongs_to :channel, Constructeev.Channel
-    has_many :messages, Constructeev.Message
+    belongs_to :feedback, Constructeev.Feedback
+
     timestamps
   end
 
-  @required_fields ~w(title author content happiness)
+  @required_fields ~w(parent_id content)
   @optional_fields ~w()
 
   @doc """

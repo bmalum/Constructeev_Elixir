@@ -6,7 +6,8 @@ defmodule Constructeev.ChannelController do
   plug :scrub_params, "channel" when action in [:create, :update]
 
   def index(conn, _params) do
-    channels = Repo.all(Channel)
+    channels =  Channel |> Repo.all |> Repo.preload [:feedbacks]
+    IO.inspect channels
     render(conn, "index.json", channels: channels)
   end
 
