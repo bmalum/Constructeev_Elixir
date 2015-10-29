@@ -7,7 +7,6 @@ defmodule Constructeev.ChannelController do
 
   def index(conn, _params) do
     channels =  Channel |> Repo.all |> Repo.preload [:feedbacks]
-    IO.inspect channels
     render(conn, "index.json", channels: channels)
   end
 
