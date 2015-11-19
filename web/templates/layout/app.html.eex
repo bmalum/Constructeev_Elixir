@@ -1,32 +1,32 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="Constructeev">
+<html ng-app="constructeev">
   <head>
+    <title>Constructeev</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Constructeev, the OpenSource Feeback Communication Platform">
-    <meta name="author" content="bMalum">
-    <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
-
-    <title>Hello Phoenix!</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <script src="https://cdn.bmalum.com/jquery/2.1.4/jquery.js"></script>
+    <script src="https://cdn.bmalum.com/semantic-ui/2.1/semantic.js"></script>
+    <script src="https://cdn.bmalum.com/angularjs/1.4.7/angular.js"></script>
+    <script src="http://cdn.bmalum.net/angularjs/1.4.7/angular-animate.js"></script>
+    <script src="http://cdn.bmalum.com/angular-ui/0.2.15/angular-ui-router.js"></script>
+    <script src="http://cdn.bmalum.net/angular-scroll/angular-scroll.js"></script>
+    <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
+    <link rel="stylesheet" href="https://cdn.bmalum.com/semantic-ui/2.1/semantic.css">
+    <link rel="stylesheet" href="http://cdn.bmalum.com/animate-css/animate.css">
     <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
   </head>
-
   <body>
-    <div class="container" role="main">
-      <div class="header">
-        <ul class="nav nav-pills pull-right">
-          <li><a href="http://www.phoenixframework.org/docs">Get Started</a></li>
-        </ul>
-        <span class="logo"></span>
+    <div ng-include="'ng-templates/side_nav.html'" include-replace>
+    </div>
+    <div class="pusher">
+      <div class="container" ng-include="'ng-templates/nav_top.html'" include-replace>
       </div>
-
-      <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
-      <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
-      <!-- Inserted from View  -->
-      <%= @inner %>
-
-    </div> <!-- /container -->
-    <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
-  </body>
+      <div ui-view>
+      </div>
+    </div>
+  </div>
+</body>
 </html>
