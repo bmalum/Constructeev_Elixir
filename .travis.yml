@@ -1,3 +1,5 @@
+before_install:
+  - git submodule update --init --recursive
 language: elixir
 after_script:
   - MIX_ENV=test mix deps.get
