@@ -31,6 +31,7 @@ defmodule Constructeev.Router do
      get "/sessions", SessionController, :index 
      post "/sessions", SessionController, :create
      delete "/sessions", SessionController, :delete 
+     get "/channel/_search", ChannelController, :search
   end
 
 end

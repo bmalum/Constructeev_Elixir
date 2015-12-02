@@ -31,6 +31,15 @@ defmodule Constructeev.ChannelController do
     render(conn, "show.json", channel: channel)
   end
 
+  def search(conn, %{"name" => name}) do
+    channel = Repo.get_by(Channel, name: name)
+    if channel do
+      render(conn, "show.json", channel: channel)
+    else
+      render(conn, "error.json", error_msg: "Channel not found")
+    end
+  end
+  
   def update(conn, %{"id" => id, "channel" => channel_params}) do
     channel = Repo.get!(Channel, id)
     changeset = Channel.changeset(channel, channel_params)
