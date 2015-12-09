@@ -24,14 +24,14 @@ defmodule Constructeev.Router do
      pipe_through :api
 
      resources "channels", ChannelController do
-      resources "feedbacks", FeedbackController do 
-        resources "messages", MessageController
+      resources "feedbacks", FeedbackController do
       end
     end
      get "/sessions", SessionController, :index 
      post "/sessions", SessionController, :create
      delete "/sessions", SessionController, :delete 
      get "/channel/_search", ChannelController, :search
+     get "/feedback/_children", FeedbackController, :children
   end
 
 end
