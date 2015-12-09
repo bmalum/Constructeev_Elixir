@@ -7,12 +7,13 @@ defmodule Constructeev.Feedback do
     field :content, :string
     field :happiness, :integer
     belongs_to :channel, Constructeev.Channel
+    belongs_to :feedback, Constructeev.Feedback
     has_many :messages, Constructeev.Message
     timestamps
   end
 
   @required_fields ~w(title author content happiness)
-  @optional_fields ~w()
+  @optional_fields ~w(feedback_id)
 
   @doc """
   Creates a changeset based on the `model` and `params`.

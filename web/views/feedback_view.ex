@@ -15,6 +15,15 @@ defmodule Constructeev.FeedbackView do
       author: feedback.author,
       content: feedback.content,
       happiness: feedback.happiness,
-      channel_id: feedback.channel_id}
+      channel_id: feedback.channel_id,
+      parent_id: feedback.feedback_id,
+      created_at: feedback.inserted_at
+    }
+  end
+
+  def render("error.json", %{error_msg: msg}) do
+      %{
+      error: msg
+      }
   end
 end
