@@ -14,6 +14,14 @@ defmodule Constructeev.ChannelView do
       name: channel.name,
       sec_hash: channel.sec_hash,
       email: channel.email,
-      slug: channel.slug}
+      slug: channel.slug
+    }
   end
+
+  def render("error.json", %{error_msg: msg}) do
+      %{
+      error: msg,
+      }
+  end
+
 end
