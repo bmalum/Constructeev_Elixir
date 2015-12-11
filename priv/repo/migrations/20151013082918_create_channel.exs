@@ -8,6 +8,7 @@ defmodule Constructeev.Repo.Migrations.CreateChannel do
       add :email, :string
       add :slug, :string
       add :description, :string
+      add :feedback_counter, :integer, default: 0
       timestamps
     end
     create unique_index(:channels, [:slug])
