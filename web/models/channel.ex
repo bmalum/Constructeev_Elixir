@@ -8,13 +8,14 @@ defmodule Constructeev.Channel do
     field :sec_hash, :string
     field :email, :string
     field :slug, :string
+    field :description, :string
 
     timestamps
     has_many :feedbacks, Constructeev.Feedback
   end
 
   @required_fields ~w(name email slug)
-  @optional_fields ~w()
+  @optional_fields ~w(description)
 
   @doc """
   Creates a changeset based on the `model` and `params`.

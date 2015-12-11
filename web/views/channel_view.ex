@@ -14,7 +14,9 @@ defmodule Constructeev.ChannelView do
       name: channel.name,
       sec_hash: channel.sec_hash,
       email: channel.email,
-      slug: channel.slug
+      slug: channel.slug,
+      description: channel.description,
+      updated_at: channel.updated_at
     }
   end
 

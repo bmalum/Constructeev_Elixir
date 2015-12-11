@@ -7,7 +7,7 @@ defmodule Constructeev.Repo.Migrations.CreateChannel do
       add :sec_hash, :string
       add :email, :string
       add :slug, :string
-
+      add :description, :string
       timestamps
     end
     create unique_index(:channels, [:slug])
