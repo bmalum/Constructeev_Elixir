@@ -7,7 +7,7 @@ defmodule Constructeev.FeedbackController do
   plug :scrub_params, "feedback" when action in [:create, :update]
 
   def index(conn, %{"channel_id" => channel_id}) do
-    feedbacks = Repo.all(from p in Feedback, where: is_nil(p.feedback_id), where: p.channel_id == ^channel_id, order_by: [asc: p.id],limit: 100)  
+    feedbacks = Repo.all(from p in Feedback, where: is_nil(p.feedback_id), where: p.channel_id == ^channel_id, order_by: [desc: p.id],limit: 100)  
     render(conn, "index.json", feedbacks: feedbacks)
   end
 
