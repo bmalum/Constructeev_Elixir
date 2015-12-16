@@ -8,6 +8,7 @@ defmodule Constructeev.Feedback do
     field :happiness, :integer
     belongs_to :channel, Constructeev.Channel
     belongs_to :feedback, Constructeev.Feedback
+    has_many :feedbacks, Constructeev.Feedback
     has_many :messages, Constructeev.Message
     timestamps
   end
