@@ -5,7 +5,7 @@ defmodule Constructeev.Repo.Migrations.CreateFeedback do
     create table(:feedbacks) do
       add :title, :string
       add :author, :string
-      add :content, :string
+      add :content, :text
       add :happiness, :integer
       add :channel_id, references(:channels)
       add :feedback_id, references(:feedbacks)

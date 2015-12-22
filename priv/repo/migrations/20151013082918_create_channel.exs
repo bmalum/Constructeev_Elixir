@@ -6,8 +6,8 @@ defmodule Constructeev.Repo.Migrations.CreateChannel do
       add :name, :string
       add :sec_hash, :string
       add :email, :string
-      add :slug, :string
-      add :description, :string
+      add :slug, :string, unique: true
+      add :description, :text
       add :feedback_counter, :integer, default: 0
       timestamps
     end
