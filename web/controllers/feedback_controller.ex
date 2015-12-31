@@ -32,13 +32,18 @@ defmodule Constructeev.FeedbackController do
   end
 
   def children(conn, %{"parent_id" => parent_id}) do
-    IO.inspect parent_id
     feedbacks = Repo.all(from p in Feedback, where: p.feedback_id == ^parent_id)
     if feedbacks do
       render(conn, "index.json", feedbacks: feedbacks)
     else
       render(conn, "error.json", error_msg: "No children found")
     end
+  end
+
+  def like(conn, %{"channel_id" => channel_id, "feedback_id" => feedback_id}) do
+      query = from f in Feedback, where: f.id == ^feedback_id
+      Repo.update_all(query, inc: [happiness: 1])
+      render(conn, "error.json", error_msg: "No children found")
   end
 
 
