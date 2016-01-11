@@ -17,6 +17,7 @@ defmodule Constructeev.ChannelView do
       slug: channel.slug,
       description: channel.description,
       feedback_counter: channel.feedback_counter,
+      likes: channel.likes,
       updated_at: channel.updated_at
     }
   end

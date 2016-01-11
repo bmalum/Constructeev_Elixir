@@ -10,6 +10,7 @@ defmodule Constructeev.Channel do
     field :slug, :string
     field :description, :string
     field :feedback_counter, :integer
+    field :likes, :integer
     timestamps
     has_many :feedbacks, Constructeev.Feedback
   end

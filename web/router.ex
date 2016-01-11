@@ -24,7 +24,7 @@ defmodule Constructeev.Router do
      pipe_through :api
 
      resources "channels", ChannelController do
-      get "_like", FeedbackController, :like
+      get "_like", ChannelController, :like
       resources "feedbacks", FeedbackController do
         get "_like", FeedbackController, :like 
       end
