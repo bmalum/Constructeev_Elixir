@@ -9,8 +9,8 @@ defmodule Constructeev.Channel do
     field :email, :string
     field :slug, :string
     field :description, :string
-    field :feedback_counter, :integer
-    field :likes, :integer
+    field :feedback_counter, :integer, default: 0
+    field :likes, :integer, default: 0
     timestamps
     has_many :feedbacks, Constructeev.Feedback
   end

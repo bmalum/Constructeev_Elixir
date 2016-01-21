@@ -13,6 +13,14 @@ defmodule Constructeev.FeedbackController do
 
   def create(conn,  %{"channel_id" => channel_id, "feedback" => feedback_params}) do
     changeset = Channel |> Repo.get(channel_id) |> Ecto.Model.build(:feedbacks) |> Feedback.changeset(feedback_params)
+    IO.inspect Dict.get(feedback_params, "feedback_id")
+    feedback_id = Dict.get(feedback_params, "feedback_id")
+    case feedback_id do 
+      nil ->  query = from f in Channel, where: f.id == ^channel_id
+              Repo.update_all(query, inc: [feedback_counter: 1])
+      _   ->  query = from f in Feedback, where: f.id == ^feedback_id
+              Repo.update_all(query, inc: [feedback_childs: 1])
+  end 
 
     case Repo.insert(changeset) do
       {:ok, feedback} ->

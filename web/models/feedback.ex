@@ -6,6 +6,7 @@ defmodule Constructeev.Feedback do
     field :author, :string
     field :content, :string
     field :happiness, :integer
+    field :feedback_childs, :integer, default: 0
     belongs_to :channel, Constructeev.Channel
     belongs_to :feedback, Constructeev.Feedback
     has_many :feedbacks, Constructeev.Feedback

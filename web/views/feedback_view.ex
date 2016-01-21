@@ -17,6 +17,7 @@ defmodule Constructeev.FeedbackView do
       happiness: feedback.happiness,
       channel_id: feedback.channel_id,
       parent_id: feedback.feedback_id,
+      feedback_childs: feedback.feedback_childs,
       created_at: feedback.inserted_at
     }
   end
