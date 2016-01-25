@@ -39,8 +39,8 @@ defmodule Constructeev.FeedbackController do
     render(conn, "show.json", feedback: feedback)
   end
 
-  def children(conn, %{"parent_id" => parent_id}) do
-    feedbacks = Repo.all(from p in Feedback, where: p.feedback_id == ^parent_id)
+  def children(conn, %{"channel_id" => channel_id, "feedback_id" => feedback_id}) do
+    feedbacks = Repo.all(from p in Feedback, where: p.feedback_id == ^feedback_id)
     if feedbacks do
       render(conn, "index.json", feedbacks: feedbacks)
     else

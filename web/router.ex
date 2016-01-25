@@ -26,14 +26,15 @@ defmodule Constructeev.Router do
      resources "channels", ChannelController do
       get "_like", ChannelController, :like
       resources "feedbacks", FeedbackController do
-        get "_like", FeedbackController, :like 
+        get "_like", FeedbackController, :like
+        get "_children", FeedbackController, :children 
       end
     end
      get "/sessions", SessionController, :index 
      post "/sessions", SessionController, :create
      delete "/sessions", SessionController, :delete 
      get "/channel/_search", ChannelController, :search
-     get "/feedback/_children", FeedbackController, :children
+     #get "/feedback/_children", FeedbackController, :children
   end
 
 end
