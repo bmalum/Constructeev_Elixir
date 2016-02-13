@@ -18,8 +18,9 @@ defmodule Constructeev.ChannelView do
       description: channel.description,
       feedback_counter: channel.feedback_counter,
       likes: channel.likes,
-      updated_at: channel.updated_at
-    }
+      updated_at: channel.updated_at,
+      channel_hash: :crypto.hash(:md5, channel.name) |> Base.encode16 |> String.downcase
+      }
   end
 
   def render("error.json", %{error_msg: msg}) do
