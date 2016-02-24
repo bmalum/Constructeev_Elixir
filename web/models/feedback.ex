@@ -10,7 +10,7 @@ defmodule Constructeev.Feedback do
     belongs_to :channel, Constructeev.Channel
     belongs_to :feedback, Constructeev.Feedback
     has_many :feedbacks, Constructeev.Feedback
-    has_many :messages, Constructeev.Message
+    has_one :feedback_properties, Constructeev.FeedbackProperty
     timestamps
   end
 

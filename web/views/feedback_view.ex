@@ -27,4 +27,10 @@ defmodule Constructeev.FeedbackView do
       error: msg
       }
   end
+
+  def render("success.json", %{error_msg: msg}) do
+      %{
+      success: true
+      }
+  end
 end
