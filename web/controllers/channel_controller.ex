@@ -2,6 +2,7 @@ defmodule Constructeev.ChannelController do
   use Constructeev.Web, :controller
 
   alias Constructeev.Channel
+  alias Constructeev.ChannelProperty
 
   plug :scrub_params, "channel" when action in [:create, :update]
 
@@ -15,6 +16,9 @@ defmodule Constructeev.ChannelController do
 
     case Repo.insert(changeset) do
       {:ok, channel} ->
+        property = %{channel_id: channel.id}
+        changeset2 = ChannelProperty.changeset(%ChannelProperty{}, property)
+        Repo.insert(changeset2)
         conn
         |> put_status(:created)
         |> put_resp_header("location", channel_path(conn, :show, channel))
@@ -43,6 +47,12 @@ defmodule Constructeev.ChannelController do
   def like(conn, %{"channel_id" => channel_id}) do
       query = from c in Channel, where: c.id == ^channel_id
       Repo.update_all(query, inc: [likes: 1])
+      render(conn, "error.json", error_msg: "No children found")
+  end
+
+  def dislike(conn, %{"channel_id" => channel_id}) do
+      query = from c in Channel, where: c.id == ^channel_id
+      Repo.update_all(query, dec: [likes: -1])
       render(conn, "error.json", error_msg: "No children found")
   end
   

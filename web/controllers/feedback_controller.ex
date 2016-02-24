@@ -2,6 +2,7 @@ defmodule Constructeev.FeedbackController do
   use Constructeev.Web, :controller
 
   alias Constructeev.Feedback
+  alias Constructeev.FeedbackProperty
   alias Constructeev.Channel
 
   plug :scrub_params, "feedback" when action in [:create, :update]
@@ -20,10 +21,15 @@ defmodule Constructeev.FeedbackController do
               Repo.update_all(query, inc: [feedback_counter: 1])
       _   ->  query = from f in Feedback, where: f.id == ^feedback_id
               Repo.update_all(query, inc: [feedback_childs: 1])
-  end 
+    end
+
+
 
     case Repo.insert(changeset) do
       {:ok, feedback} ->
+        property = %{unread: false, favorite: false, feedback_id: feedback.id, channel_id: channel_id}
+        changeset2 = FeedbackProperty.changeset(%FeedbackProperty{}, property)
+        Repo.insert(changeset2)
         conn
         |> put_status(:created)
         |> render("show.json", feedback: feedback)
@@ -51,7 +57,13 @@ defmodule Constructeev.FeedbackController do
   def like(conn, %{"channel_id" => channel_id, "feedback_id" => feedback_id}) do
       query = from f in Feedback, where: f.id == ^feedback_id
       Repo.update_all(query, inc: [happiness: 1])
-      render(conn, "error.json", error_msg: "No children found")
+      render(conn, "success.json", error_msg: "true")
+  end
+
+  def dislike(conn, %{"channel_id" => channel_id, "feedback_id" => feedback_id}) do
+      query = from f in Feedback, where: f.id == ^feedback_id
+      Repo.update_all(query, inc: [happiness: -1])
+      render(conn, "success.json", error_msg: "ture")
   end
 
 
