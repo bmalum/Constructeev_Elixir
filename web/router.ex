@@ -26,12 +26,6 @@ defmodule Constructeev.Router do
 
      scope "/admin/" do
       resources "/feedback_properties", FeedbackPropertyController
-      get "_debug", FeedbackPropertyController, :index
-      get "_read", AdminController, :read
-      get "_fav", AdminController, :fav
-      get "_display", AdminController, :display
-      get "_setstart", AdminController, :starttime
-      get "_setstop", AdminController, :stoptime
      end
 
      resources "channels", ChannelController do

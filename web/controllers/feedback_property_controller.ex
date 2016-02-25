@@ -47,7 +47,7 @@ defmodule Constructeev.FeedbackPropertyController do
 
     case Repo.update(changeset) do
       {:ok, feedback_property} ->
-        render(conn, "show.json", feedback_property: feedback_property)
+        render(conn, "show_property.json", feedback_property: feedback_property)
       {:error, changeset} ->
         conn
         |> put_status(:unprocessable_entity)

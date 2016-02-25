@@ -9,6 +9,15 @@ defmodule Constructeev.FeedbackPropertyView do
     %{data: render_one(feedback_property, Constructeev.FeedbackPropertyView, "feedback_property.json")}
   end
 
+  def render("show_property.json", %{feedback_property: feedback_property}) do
+    %{id: feedback_property.id,
+      feedback_id: feedback_property.feedback_id,
+      unread: feedback_property.unread,
+      favorite: feedback_property.favorite,
+      created_at: feedback_property.inserted_at
+    }
+  end
+
   def render("feedback_property.json", %{feedback_property: feedback_property}) do
     %{id: feedback_property.id,
       feedback_id: feedback_property.feedback_id,
