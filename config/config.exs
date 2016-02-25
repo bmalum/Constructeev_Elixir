@@ -5,6 +5,10 @@
 # is restricted to this project.
 use Mix.Config
 
+config :constructeev,
+       mailgun_domain: System.get_env("MAILGUN_DOMAIN"),
+       mailgun_key: System.get_env("MAILGUN_API_KEY")
+
 # Configures the endpoint
 config :constructeev, Constructeev.Endpoint,
   url: [host: "localhost"],
@@ -22,6 +26,7 @@ config :logger, :console,
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
 import_config "#{Mix.env}.exs"
+import_config "config.secret.exs"
 
 # Configure phoenix generators
 config :phoenix, :generators,

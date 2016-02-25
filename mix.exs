@@ -36,6 +36,7 @@ defmodule Constructeev.Mixfile do
      {:phoenix_live_reload, "~> 1.0", only: :dev},
      {:cowboy, "~> 1.0"},
      {:cowboy, "~> 1.0"},
-     {:inch_ex, only: :test}]
+     {:inch_ex, only: :test},
+   {:mailgun, "~> 0.1.2"}]
   end
 end

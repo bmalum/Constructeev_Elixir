@@ -7,6 +7,7 @@ defmodule Constructeev.ChannelController do
   plug :scrub_params, "channel" when action in [:create, :update]
 
   def index(conn, _params) do
+    Constructeev.Mailer.send_welcome_text_email("us@example.com")
     channels =  Channel |> Repo.all |> Repo.preload [:feedbacks]
     render(conn, "index.json", channels: channels)
   end
