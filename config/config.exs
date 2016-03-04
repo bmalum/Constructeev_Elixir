@@ -8,7 +8,7 @@ use Mix.Config
 config :constructeev,
        mailgun_domain: System.get_env("MAILGUN_DOMAIN"),
        mailgun_key: System.get_env("MAILGUN_API_KEY")
-
+       
 # Configures the endpoint
 config :constructeev, Constructeev.Endpoint,
   url: [host: "localhost"],
