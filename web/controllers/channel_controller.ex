@@ -7,19 +7,20 @@ defmodule Constructeev.ChannelController do
   plug :scrub_params, "channel" when action in [:create, :update]
 
   def index(conn, _params) do
-    Constructeev.Mailer.send_welcome_text_email("us@example.com")
-    channels =  Channel |> Repo.all |> Repo.preload [:feedbacks]
+    channels =  Channel |> Repo.all #|> Repo.preload [:feedbacks]
     render(conn, "index.json", channels: channels)
   end
 
   def create(conn, %{"channel" => channel_params}) do
+    IO.inspect channel_params
     changeset = Channel.changeset(%Channel{}, channel_params)
-
     case Repo.insert(changeset) do
       {:ok, channel} ->
         property = %{channel_id: channel.id}
         changeset2 = ChannelProperty.changeset(%ChannelProperty{}, property)
         Repo.insert(changeset2)
+        IO.inspect channel
+        Constructeev.Mailer.send_welcome_email(%{name: channel.name, email: channel.email, hash: channel.sec_hash})
         conn
         |> put_status(:created)
         |> put_resp_header("location", channel_path(conn, :show, channel))

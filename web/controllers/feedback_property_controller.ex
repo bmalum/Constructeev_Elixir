@@ -5,12 +5,14 @@ defmodule Constructeev.FeedbackPropertyController do
   alias Constructeev.Feedback
   alias Constructeev.Channel
 
+  plug :auth, "" when action in [:index, :show]
+  plug :auth_write, "" when action in [:create, :update]
   plug :scrub_params, "feedback_property" when action in [:create, :update]
 
   def index(conn, _params) do
-    id = Dict.get(_params, "id")
+    id = Dict.get(_params, "channel_id")
     feedback_properties = Repo.all(from(p in FeedbackProperty, where: p.channel_id == ^id)) |> Repo.preload [:feedback]
-    #IO.inspect feedback_properties
+   # IO.inspect feedback_properties
    # query = from f in Feedback,
    #       join: p in FeedbackProperty, where: p.feedback_id == f.id
    #       feedback_properties = Repo.all(query)
@@ -61,7 +63,28 @@ defmodule Constructeev.FeedbackPropertyController do
     # Here we use delete! (with a bang) because we expect
     # it to always work (and if it does not, it will raise).
     Repo.delete!(feedback_property)
-
     send_resp(conn, :no_content, "")
   end
+
+  defp auth(conn, _) do
+   channel_id = get_session(conn, :channel_id)
+   {id, _}  = Integer.parse(conn.params["channel_id"])
+    if channel_id == id do
+      conn 
+    else
+      send_resp(conn, 401, "NOT AUTHORIZED") |> halt()
+    end
+  end
+
+  defp auth_write(conn, _) do
+   channel_id = get_session(conn, :channel_id)
+   id =  conn.body_params["feedback_property"]["channel_id"]
+   #{id, _}  = Integer.parse(conn.params["channel_id"])
+    if channel_id == id do
+      conn 
+    else
+      send_resp(conn, 401, "NOT AUTHORIZED") |> halt()
+    end
+  end
+
 end

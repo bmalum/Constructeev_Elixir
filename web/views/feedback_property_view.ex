@@ -33,4 +33,11 @@ defmodule Constructeev.FeedbackPropertyView do
       created_at: feedback_property.feedback.inserted_at
     }
   end
+
+  def render("error.json", %{msg: msg}) do
+      %{
+      error: true,
+      error_msg: msg
+      }
+  end
 end

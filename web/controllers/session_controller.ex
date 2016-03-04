@@ -17,6 +17,7 @@ defmodule Constructeev.SessionController do
     if channel do
       conn = put_session(conn, :valid, true)     
       conn = put_session(conn, :channel, channel)     
+      conn = put_session(conn, :channel_id, channel.id)     
       render(conn, "show.json", channel: channel)
     else
       render(conn, "error.json", error_msg: "Invalid Security Hash")

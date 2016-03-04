@@ -1,0 +1,8 @@
+<div class="ui segement">
+  <h1 class="ui centered header">Welcome to Constructeev <%= @name %>!</h1>
+  <b>Congratulation:</b> Your Channel has been created <br>
+<br>
+	Use this Security Token to Login:  <b><%= @hash %></b>
+<br> <br> 
+	<i>Please only share this code with group members or authorized persons. </i>
+</div
