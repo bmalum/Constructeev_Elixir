@@ -11,14 +11,14 @@ defmodule Constructeev.FeedbackPropertyController do
 
   def index(conn, _params) do
     id = Dict.get(_params, "channel_id")
-    feedback_properties = Repo.all(from(p in FeedbackProperty, where: p.channel_id == ^id)) |> Repo.preload [:feedback]
+   # feedback_properties = Repo.all(from(p in FeedbackProperty, where: p.channel_id == ^id)) |> Repo.preload [:feedback]
+  #  feedback_properties = Repo.all(from(p in Feedback, where: p.id == ^id, where: is_nil(p.feedback_id))) |> Repo.preload [:feedback_properties]
    # IO.inspect feedback_properties
-   # query = from f in Feedback,
-   #       join: p in FeedbackProperty, where: p.feedback_id == f.id
-   #       feedback_properties = Repo.all(query)
-   #       IO.inspect  feedback_properties
-   #
-   #from(p in FeedbackProperty, where: p.id == )
+    query = from f in FeedbackProperty,
+          left_join: p in Feedback, on: f.feedback_id == p.id, where: is_nil(p.feedback_id)
+          feedback_properties = Repo.all(query) |> Repo.preload [:feedback]
+          IO.inspect  feedback_properties
+
     render(conn, "index.json", feedback_properties: feedback_properties)
   end
 
