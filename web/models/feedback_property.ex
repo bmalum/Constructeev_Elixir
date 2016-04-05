@@ -2,7 +2,7 @@ defmodule Constructeev.FeedbackProperty do
   use Constructeev.Web, :model
 
   schema "feedback_properties" do
-    field :unread, :boolean, default: false
+    field :unread, :boolean, default: true
     field :favorite, :boolean, default: false
     belongs_to :channel, Constructeev.Channel
     belongs_to :feedback, Constructeev.Feedback
