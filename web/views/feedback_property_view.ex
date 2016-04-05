@@ -1,6 +1,6 @@
 defmodule Constructeev.FeedbackPropertyView do
   use Constructeev.Web, :view
-
+  
   def render("index.json", %{feedback_properties: feedback_properties}) do
     %{data: render_many(feedback_properties, Constructeev.FeedbackPropertyView, "feedback_property.json")}
   end
