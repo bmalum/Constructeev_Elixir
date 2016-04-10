@@ -15,7 +15,7 @@ defmodule Constructeev.FeedbackPropertyController do
   #  feedback_properties = Repo.all(from(p in Feedback, where: p.id == ^id, where: is_nil(p.feedback_id))) |> Repo.preload [:feedback_properties]
    # IO.inspect feedback_properties
     query = from f in FeedbackProperty,
-          left_join: p in Feedback, on: f.feedback_id == p.id, where: is_nil(p.feedback_id)
+          left_join: p in Feedback, on: f.feedback_id == p.id, where: is_nil(p.feedback_id), where: p.channel_id == ^id
           feedback_properties = Repo.all(query) |> Repo.preload [:feedback]
           IO.inspect  feedback_properties
 
