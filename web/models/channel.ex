@@ -2,6 +2,7 @@ defmodule Constructeev.Channel do
   use Constructeev.Web, :model
 
   before_insert :generate_sec_hash
+  before_insert :has_slug
 
   schema "channels" do
     field :name, :string
@@ -15,8 +16,8 @@ defmodule Constructeev.Channel do
     has_many :feedbacks, Constructeev.Feedback
   end
 
-  @required_fields ~w(name email slug)
-  @optional_fields ~w(description)
+  @required_fields ~w(name email)
+  @optional_fields ~w(description slug)
 
   @doc """
   Creates a changeset based on the `model` and `params`.
@@ -24,6 +25,16 @@ defmodule Constructeev.Channel do
   If no params are provided, an invalid changeset is returned
   with no validation performed.
   """
+
+  def has_slug(changeset) do
+    {:changes, var_slug} = fetch_field(changeset, :slug)
+    if(!var_slug) do
+      var_slug = :crypto.strong_rand_bytes(5) |> Base.encode32(case: :lower)
+    end
+    changeset
+    |> Ecto.Changeset.put_change(:slug, var_slug)
+  end
+
   def generate_sec_hash(changeset) do
     sec_hash = :crypto.strong_rand_bytes(5) |> Base.encode32(case: :lower)
     changeset
