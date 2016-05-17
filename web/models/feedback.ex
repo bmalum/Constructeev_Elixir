@@ -14,8 +14,8 @@ defmodule Constructeev.Feedback do
     timestamps
   end
 
-  @required_fields ~w(title author content happiness)
-  @optional_fields ~w(feedback_id)
+  @required_fields ~w(title content happiness)
+  @optional_fields ~w(feedback_id author)
 
   @doc """
   Creates a changeset based on the `model` and `params`.

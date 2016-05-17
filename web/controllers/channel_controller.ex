@@ -57,7 +57,7 @@ defmodule Constructeev.ChannelController do
       Repo.update_all(query, dec: [likes: -1])
       render(conn, "error.json", error_msg: "No children found")
   end
-  
+
   def update(conn, %{"id" => id, "channel" => channel_params}) do
     channel = Repo.get!(Channel, id)
     changeset = Channel.changeset(channel, channel_params)

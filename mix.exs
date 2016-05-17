@@ -37,6 +37,7 @@ defmodule Constructeev.Mixfile do
      {:cowboy, "~> 1.0"},
      {:cowboy, "~> 1.0"},
      {:inch_ex, only: :test},
-   {:mailgun, "~> 0.1.2"}]
+     {:mailgun, "~> 0.1.2"},
+     {:faker, "~> 0.5"}]
   end
 end

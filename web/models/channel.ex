@@ -45,5 +45,6 @@ defmodule Constructeev.Channel do
     model
     |> cast(params, @required_fields, @optional_fields)
     |> unique_constraint(:slug)
+    |> validate_format(:email, ~r/@/)
   end
 end
