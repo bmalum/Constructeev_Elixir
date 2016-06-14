@@ -5,4 +5,4 @@
 	Use this Security Token to Login:  <b><%= @hash %></b>
 <br> <br> 
 	<i>Please only share this code with group members or authorized persons. </i>
-</div
+</div>
