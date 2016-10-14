@@ -13,9 +13,9 @@
     <script src="https://cdn.bmalum.com/jquery/2.1.4/jquery.js"></script>
     <script src="https://cdn.bmalum.com/semantic-ui/2.1/semantic.js"></script>
     <script src="https://cdn.bmalum.com/angularjs/1.4.7/angular.js"></script>
-    <script src="http://cdn.bmalum.net/angularjs/1.4.7/angular-animate.js"></script>
+    <script src="http://cdn.bmalum.com/angularjs/1.4.7/angular-animate.js"></script>
     <script src="http://cdn.bmalum.com/angular-ui/0.2.15/angular-ui-router.js"></script>
-    <script src="http://cdn.bmalum.net/angular-scroll/angular-scroll.js"></script>
+    <script src="http://cdn.bmalum.com/angular-scroll/angular-scroll.js"></script>
     <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
     <link rel="stylesheet" href="https://cdn.bmalum.com/semantic-ui/2.1/semantic.css">
     <link rel="stylesheet" href="http://cdn.bmalum.com/animate-css/animate.css">
