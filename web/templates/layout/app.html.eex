@@ -10,9 +10,9 @@
     <meta name="author" content="">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="white">
-    <script src="https://212.47.242.176/jquery/2.1.4/jquery.js"></script>
-    <script src="https://212.47.242.176/semantic-ui/2.1/semantic.js"></script>
-    <script src="https://212.47.242.176/angularjs/1.4.7/angular.js"></script>
+    <script src="http://212.47.242.176/jquery/2.1.4/jquery.js"></script>
+    <script src="http://212.47.242.176/semantic-ui/2.1/semantic.js"></script>
+    <script src="http://212.47.242.176/angularjs/1.4.7/angular.js"></script>
     <script src="http://212.47.242.176/angularjs/1.4.7/angular-animate.js"></script>
     <script src="http://212.47.242.176/angular-ui/0.2.15/angular-ui-router.js"></script>
     <script src="http://212.47.242.176/angular-scroll/angular-scroll.js"></script>
