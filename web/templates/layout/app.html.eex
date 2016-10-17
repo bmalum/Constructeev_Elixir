@@ -17,7 +17,7 @@
     <script src="http://cdn.bmalum.com/angular-ui/0.2.15/angular-ui-router.js"></script>
     <script src="http://cdn.bmalum.com/angular-scroll/angular-scroll.js"></script>
     <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
-    <link rel="stylesheet" type="text/css" href="https://cdn.bmalum.com/semantic-ui/2.1/semantic.css">
+    <link rel="stylesheet" type="text/css" href="http://cdn.bmalum.com/semantic-ui/2.1/semantic.css">
     <link rel="stylesheet" type="text/css" href="http://cdn.bmalum.com/animate-css/animate.css">
     <link rel="stylesheet" type="text/css" href="<%= static_path(@conn, "/css/app.css") %>">
   </head>
